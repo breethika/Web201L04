@@ -9,10 +9,10 @@ describe("Todo Test Suite", () => {
       new Date().setDate(new Date().getDate() - 1)
     ).toLocaleDateString("en-CA");
     let today = new Date().toLocaleDateString("en-CA");
-    add({ title: "S_A", dueDate: yesterday, completed: false });
-    add({ title: "P_A", dueDate: yesterday, completed: false });
-    add({ title: "S_V", dueDate: yesterday, completed: false });
-    add({ title: "F_T", dueDate: today, completed: false });
+    add({ title: "s-a", dueDate: yesterday, completed: false });
+    add({ title: "p-a", dueDate: yesterday, completed: false });
+    add({ title: "s-v", dueDate: yesterday, completed: false });
+    add({ title: "f-t", dueDate: today, completed: false });
   });
 
   test("Testing Add todo Function", () => {
@@ -20,7 +20,7 @@ describe("Todo Test Suite", () => {
     let tomorrow = new Date(
       new Date().setDate(new Date().getDate() + 1)
     ).toLocaleDateString("en-CA");
-    add({ title: "P_E bill", dueDate: tomorrow, completed: false });
+    add({ title: "p-e bill", dueDate: tomorrow, completed: false });
     expect(all.length).toBe(todoItemsCount + 1);
   });
 
@@ -33,9 +33,9 @@ describe("Todo Test Suite", () => {
 
   test("Testing retrieval of overdue items", () => {
     expect(overdue().length).toBe(3);
-    expect(overdue()[0].title).toBe("S_A");
-    expect(overdue()[1].title).toBe("P_R");
-    expect(overdue()[2].title).toBe("S_V");
+    expect(overdue()[0].title).toBe("s-a");
+    expect(overdue()[1].title).toBe("p-r");
+    expect(overdue()[2].title).toBe("s-v");
   });
 
   test("Testing retrieval of due today Items", () => {
@@ -45,6 +45,6 @@ describe("Todo Test Suite", () => {
 
   test("Testing retrieval of due later Items", () => {
     expect(dueLater().length).toBe(1);
-    expect(dueLater()[0].title).toBe("P_E bill");
+    expect(dueLater()[0].title).toBe("p-e bill");
   });
 });
