@@ -40,12 +40,16 @@ const todoList = () => {
   const toDisplayableList = (list) => {
     // Format the To-Do list here, and return the output string as per the format given above.
     output = "";
-    for (let i = 0; i < list.length; i++) {
-      output += `[${list[i].completed ? "x" : " "}] ${list[i].title} ${
-        list[i].dueDate == formattedDate(new Date()) ? "" : list[i].dueDate
-      }${i < list.length - 1 ? "\n" : ""}`;
-    }
+    output = list
+      .map(
+        (x) =>
+          `[${x.completed ? "x" : " "}] ${x.title} ${
+            x.dueDate == formattedDate(new Date()) ? "" : x.dueDate
+          }`
+      )
+      .join("\n");
     return output;
+  };
   };
 
   return {
@@ -56,11 +60,6 @@ const todoList = () => {
     dueToday,
     dueLater,
     toDisplayableList,
-    formattedDate,
-    dateToday,
-    today,
-    yesterday,
-    tomorrow,
   };
 };
 
